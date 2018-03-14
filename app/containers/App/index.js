@@ -14,16 +14,25 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import UserRoute from 'components/Routes/UserRoute';
+import GuestRoute from 'components/Routes/GuestRoute';
 import HomePage from 'containers/HomePage/Loadable';
+import LoginPage from 'containers/LoginPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
-export default function App() {
-  return (
-    <div>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
-      </Switch>
-    </div>
-  );
+class App extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <GuestRoute exact path="/login" component={LoginPage} />
+          <UserRoute exact path="/dashboard" component={NotFoundPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </div>
+    );
+  }
 }
+
+export default App;

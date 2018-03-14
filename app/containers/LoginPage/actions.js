@@ -1,6 +1,6 @@
 /*
  *
- * {{ properCase name }} actions
+ * LoginPage actions
  *
  */
 import action from 'utils/action';

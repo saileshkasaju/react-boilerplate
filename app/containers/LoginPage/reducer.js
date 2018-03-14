@@ -1,6 +1,6 @@
 /*
  *
- * {{ properCase name }} reducer
+ * LoginPage reducer
  *
  */
 
@@ -14,7 +14,7 @@ const initialState = fromJS({
   error: '',
 });
 
-function {{ camelCase name }}Reducer(state = initialState, action = {}) {
+function loginPageReducer(state = initialState, action = {}) {
   switch (action.type) {
     case types.DEFAULT_ACTION:
       return state;
@@ -23,4 +23,4 @@ function {{ camelCase name }}Reducer(state = initialState, action = {}) {
   }
 }
 
-export default {{ camelCase name }}Reducer;
+export default loginPageReducer;

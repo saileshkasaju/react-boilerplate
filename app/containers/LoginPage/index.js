@@ -1,95 +1,60 @@
 /**
  *
- * {{properCase name }}
+ * LoginPage
  *
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-{{#if wantHeaders}}
-import { Helmet } from 'react-helmet';
-{{/if}}
-{{#if wantMessages}}
 import { FormattedMessage } from 'react-intl';
-{{/if}}
-{{#if wantActionsAndReducer}}
 import { createStructuredSelector } from 'reselect';
-{{/if}}
 import { compose } from 'redux';
 
-{{#if wantSaga}}
 import injectSaga from 'utils/injectSaga';
-{{/if}}
-{{#if wantActionsAndReducer}}
 import injectReducer from 'utils/injectReducer';
 import {
   makeSelectRequesting, makeSelectError, makeSelectResponse, makeSelectSuccess
 } from './selectors';
 import reducer from './reducer';
-{{/if}}
-{{#if wantSaga}}
 import saga from './saga';
-{{/if}}
-{{#if wantMessages}}
 import messages from './messages';
-{{/if}}
 
-class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line react/prefer-stateless-function
+class LoginPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-      {{#if wantHeaders}}
-        <Helmet>
-          <title>{{properCase name}}</title>
-          <meta name="description" content="Description of {{properCase name}}" />
-        </Helmet>
-      {{/if}}
-      {{#if wantMessages}}
         <FormattedMessage {...messages.header} />
-      {{/if}}
       </div>
     );
   }
 }
 
-{{ properCase name }}.propTypes = {
+LoginPage.propTypes = {
   isRequesting: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
   errorResponse: PropTypes.string.isRequired,
   successResponse: PropTypes.string.isRequired,
 };
 
-{{#if wantActionsAndReducer}}
 const mapStateToProps = createStructuredSelector({
   isRequesting: makeSelectRequesting(),
   isSuccess: makeSelectSuccess(),
   errorResponse: makeSelectError(),
   successResponse: makeSelectResponse(),
 });
-{{/if}}
 
 const mapDispatchToProps = (dispatch) => ({
 
 });
 
-{{#if wantActionsAndReducer}}
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: '{{ camelCase name }}', reducer });
-{{else}}
-const withConnect = connect(null, mapDispatchToProps);
-{{/if}}
-{{#if wantSaga}}
-const withSaga = injectSaga({ key: '{{ camelCase name }}', saga });
-{{/if}}
+const withReducer = injectReducer({ key: 'loginPage', reducer });
+const withSaga = injectSaga({ key: 'loginPage', saga });
 
 export default compose(
-{{#if wantActionsAndReducer}}
   withReducer,
-{{/if}}
-{{#if wantSaga}}
   withSaga,
-{{/if}}
   withConnect,
-)({{ properCase name }});
+)(LoginPage);

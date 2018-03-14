@@ -7,6 +7,11 @@ const makeSelectLocation = () => createSelector(
   (routeState) => routeState.get('location').toJS()
 );
 
+const makeSelectIsAuthenticated = () => createSelector(selectGlobal, state =>
+  !!state.get('token')
+);
+
 export {
   makeSelectLocation,
+  makeSelectIsAuthenticated,
 };

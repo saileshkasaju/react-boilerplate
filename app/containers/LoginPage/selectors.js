@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
 
 /**
- * Direct selector to the {{ camelCase name }} state domain
+ * Direct selector to the loginPage state domain
  */
-const selectDomain = state => state.get('{{ camelCase name }}');
+const selectDomain = state => state.get('loginPage');
 
 /**
  * Other specific selectors

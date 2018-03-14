@@ -14,7 +14,7 @@ function* defaultActionService() {
   const token = localStorage.getItem("token");
   const successWatcher = yield fork(redirectOnSuccess);
   yield fork(
-    XcelToken.post(
+    Api.post(
       `api/some-api-url`,
       actions.defaultActionSuccess,
       actions.defaultActionFailure,
