@@ -150,6 +150,7 @@
         "multiline"
       ],
       "react/jsx-filename-extension": 0,
+      "react/jsx-max-props-per-line": 0,
       "react/jsx-no-target-blank": 0,
       "react/require-default-props": 0,
       "react/require-extension": 0,

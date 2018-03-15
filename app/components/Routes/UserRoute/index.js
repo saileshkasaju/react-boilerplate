@@ -7,7 +7,7 @@ import { makeSelectIsAuthenticated } from 'containers/App/selectors';
 
 const UserRoute = ({ isAuthenticated, component: Component, ...rest }) => (
   <Route
-    {...rest} render={props =>
+    {...rest} render={(props) =>
     isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />}
   />
 );

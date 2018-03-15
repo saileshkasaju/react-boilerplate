@@ -14,7 +14,7 @@ import { compose } from 'redux';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import {
-  makeSelectRequesting, makeSelectError, makeSelectResponse, makeSelectSuccess
+  makeSelectRequesting, makeSelectError, makeSelectResponse, makeSelectSuccess,
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -44,7 +44,7 @@ const mapStateToProps = createStructuredSelector({
   successResponse: makeSelectResponse(),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({ // eslint-disable-line
 
 });
 
