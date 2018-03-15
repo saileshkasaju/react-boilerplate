@@ -13,12 +13,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
+import FontFaceObserver from 'fontfaceobserver';
 import createHistory from 'history/createBrowserHistory';
+import jwtDecode from 'jwt-decode';
 import 'sanitize.css/sanitize.css';
 import 'semantic-ui-css/semantic.min.css';
 
 // Import root app
 import App from 'containers/App';
+import { setUser, setToken } from 'containers/App/actions';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
@@ -46,11 +49,40 @@ import { translationMessages } from './i18n';
 // Import CSS reset and Global Styles
 import './global-styles';
 
+// Observe loading of Montserrat (to remove open sans, remove the <link> tag in
+// the index.html file and this observer)
+const fontFaceObserver = new FontFaceObserver('Montserrat', {});
+
+// When Open Sans is loaded, add a font-family using Open Sans to the body
+fontFaceObserver.load().then(() => {
+  document.body.classList.add('fontLoaded');
+}, () => {
+  document.body.classList.remove('fontLoaded');
+});
+
 // Create redux store with history
 const initialState = {};
 const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
+
+const token = localStorage.getItem('token');
+if (token) {
+  try {
+    const decoded = jwtDecode(token);
+    if (
+      !(typeof decoded === 'object' && typeof decoded.exp === 'number' && decoded.exp > Date.now() / 1000)
+    ) {
+      localStorage.clear();
+    } else {
+      const { user } = decoded;
+      store.dispatch(setUser(user));
+      store.dispatch(setToken(token));
+    }
+  } catch (error) {
+    localStorage.clear();
+  }
+}
 
 const render = (messages) => {
   ReactDOM.render(

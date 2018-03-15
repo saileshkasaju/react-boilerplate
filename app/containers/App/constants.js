@@ -10,3 +10,13 @@
  */
 
 export const DEFAULT_LOCALE = 'en';
+
+export const API_BASE = 'http://api-base:4000/api/';
+
+export const SET_USER = 'app/App/SET_USER';
+export const SET_TOKEN = 'app/App/SET_TOKEN';
+export const SET_DIALOG = 'app/App/SET_DIALOG';
+
+export const LOGOUT_REQUEST = 'app/App/LOGOUT_REQUEST';
+export const LOGOUT_SUCCESS = 'app/App/LOGOUT_SUCCESS';
+export const LOGOUT_FAILURE = 'app/App/LOGOUT_FAILURE';
