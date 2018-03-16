@@ -19,7 +19,7 @@ import injectReducer from 'utils/injectReducer';
 import Toaster from 'components/Toaster';
 import { loginRequest } from './actions';
 import {
-  makeSelectRequesting, makeSelectError, makeSelectResponse, makeSelectSuccess,
+  makeSelectRequesting, makeSelectError, makeSelectResponse,
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
