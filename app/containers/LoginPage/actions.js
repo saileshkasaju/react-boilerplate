@@ -6,8 +6,6 @@
 import action from 'utils/action';
 import * as types from './constants';
 
-export const defaultAction = action(types.DEFAULT_ACTION);
-
-export const defaultActionRequest = action(types.DEFAULT_ACTION_REQUEST);
-export const defaultActionSuccess = action(types.DEFAULT_ACTION_SUCCESS);
-export const defaultActionFailure = action(types.DEFAULT_ACTION_FAILURE);
+export const loginRequest = action(types.LOGIN_REQUEST, 'data');
+export const loginSuccess = action(types.LOGIN_SUCCESS, 'response');
+export const loginFailure = action(types.LOGIN_FAILURE, 'error');

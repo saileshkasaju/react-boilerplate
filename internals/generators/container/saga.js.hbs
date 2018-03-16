@@ -1,20 +1,24 @@
-import { take, takeLatest, call, fork, put, select } from 'redux-saga/effects';
+import { take, takeLatest, fork, put, select } from 'redux-saga/effects';
 import { LOCATION_CHANGE, push } from "react-router-redux";
+
+import Api from 'utils/Api';
+import { makeSelectToken } from 'containers/App/selectors';
+
 import * as types from './constants';
 import * as actions from './actions';
-import Api from 'utils/Api';
 
 function* redirectOnSuccess() {
-  const action = yield take([types.DEFAULT_ACTION]);
+  yield take(types.DEFAULT_ACTION);
   // executed on successful action
-  // yield put(push("/next-route"));
+  yield put(push("/next-route"));
 }
 
-function* defaultActionService() {
-  const token = localStorage.getItem("token");
+function* defaultActionService(action) {
+  const token = yield select(makeSelectToken());
+  const { payload } = action;
   const successWatcher = yield fork(redirectOnSuccess);
   yield fork(
-    XcelToken.post(
+    Api.post(
       `api/some-api-url`,
       actions.defaultActionSuccess,
       actions.defaultActionFailure,

@@ -3,15 +3,15 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the {{ camelCase name }} state domain
  */
-const selectDomain = state => state.get('{{ camelCase name }}');
+const selectDomain = (state) => state.get('{{ camelCase name }}');
 
 /**
  * Other specific selectors
  */
-const makeSelectSuccess = () => createSelector(selectDomain, state => state.get('success'));
-const makeSelectResponse = () => createSelector(selectDomain, state => state.get('response'));
-const makeSelectError = () => createSelector(selectDomain, state => state.get('error'));
-const makeSelectRequesting = () => createSelector(selectDomain, state => state.get('requesting'));
+const makeSelectSuccess = () => createSelector(selectDomain, (state) => state.get('success'));
+const makeSelectResponse = () => createSelector(selectDomain, (state) => state.get('response'));
+const makeSelectError = () => createSelector(selectDomain, (state) => state.get('error'));
+const makeSelectRequesting = () => createSelector(selectDomain, (state) => state.get('requesting'));
 
 export {
   makeSelectSuccess,

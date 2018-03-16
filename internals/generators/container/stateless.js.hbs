@@ -33,7 +33,8 @@ import saga from './saga';
 import messages from './messages';
 {{/if}}
 
-function {{ properCase name }}() {
+const {{ properCase name }} = (props) => {
+  const {} = props;
   return (
     <div>
     {{#if wantHeaders}}
@@ -50,7 +51,7 @@ function {{ properCase name }}() {
 }
 
 {{ properCase name }}.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+
 };
 
 {{#if wantActionsAndReducer}}
@@ -59,11 +60,9 @@ const mapStateToProps = createStructuredSelector({
 });
 {{/if}}
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
+const mapDispatchToProps = (dispatch) => ({
+
+})
 
 {{#if wantActionsAndReducer}}
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

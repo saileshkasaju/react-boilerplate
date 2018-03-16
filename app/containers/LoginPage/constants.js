@@ -4,8 +4,6 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/LoginPage/DEFAULT_ACTION';
-
-export const DEFAULT_ACTION_REQUEST = 'app/LoginPage/DEFAULT_ACTION_REQUEST';
-export const DEFAULT_ACTION_SUCCESS = 'app/LoginPage/DEFAULT_ACTION_SUCCESS';
-export const DEFAULT_ACTION_FAILURE = 'app/LoginPage/DEFAULT_ACTION_FAILURE';
+export const LOGIN_REQUEST = 'app/LoginPage/LOGIN_REQUEST';
+export const LOGIN_SUCCESS = 'app/LoginPage/LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'app/LoginPage/LOGIN_FAILURE';

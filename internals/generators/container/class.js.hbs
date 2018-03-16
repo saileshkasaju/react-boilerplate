@@ -36,7 +36,10 @@ import messages from './messages';
 {{/if}}
 
 class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line react/prefer-stateless-function
+  state = {};
   render() {
+    const {} = this.state;
+    const {} = this.props;
     return (
       <div>
       {{#if wantHeaders}}

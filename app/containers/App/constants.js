@@ -11,7 +11,8 @@
 
 export const DEFAULT_LOCALE = 'en';
 
-export const API_BASE = 'http://api-base:4000/api/';
+export const API_BASE = process.env.NODE_ENV === 'production' ?
+  'https://deployment.com/api/' : 'https://development.com/api/';
 
 export const SET_USER = 'app/App/SET_USER';
 export const SET_TOKEN = 'app/App/SET_TOKEN';

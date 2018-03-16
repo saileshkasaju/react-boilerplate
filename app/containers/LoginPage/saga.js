@@ -1,32 +1,29 @@
-import { take, takeLatest, fork, cancel } from 'redux-saga/effects';
+import { take, takeLatest, fork, put, cancel } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import Api from 'utils/Api';
+
+import XcelToken from 'utils/Api';
+import { setUser, setToken } from 'containers/App/actions';
 import * as types from './constants';
 import * as actions from './actions';
 
 function* redirectOnSuccess() {
-  yield take([types.DEFAULT_ACTION]);
-  // executed on successful action
-  // yield put(push("/next-route"));
+  const action = yield take(types.LOGIN_SUCCESS);
+  const { response } = action;
+  const { token, userInfo } = response.data;
+  localStorage.setItem('token', token);
+  yield put(setUser(userInfo));
+  yield put(setToken(token));
 }
 
-function* defaultActionService() {
-  const token = localStorage.getItem('token');
+function* loginFlow(action) {
   const successWatcher = yield fork(redirectOnSuccess);
-  yield fork(
-    Api.post(
-      'api/some-api-url',
-      actions.defaultActionSuccess,
-      actions.defaultActionFailure,
-      { some: 'data' },
-      token,
-    )
-  );
-  yield take([LOCATION_CHANGE, types.DEFAULT_ACTION_FAILURE]);
+  const { data } = action;
+  yield fork(XcelToken.post('login', actions.loginSuccess, actions.loginFailure, data));
+  yield take([LOCATION_CHANGE, types.LOGIN_FAILURE]);
   yield cancel(successWatcher);
 }
 
 // Individual exports for testing
 export default function* defaultSaga() {
-  yield takeLatest(types.DEFAULT_ACTION_REQUEST, defaultActionService);
+  yield takeLatest(types.LOGIN_REQUEST, loginFlow);
 }
