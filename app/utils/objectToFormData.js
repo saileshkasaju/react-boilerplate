@@ -26,4 +26,3 @@ const objectToFormData = (obj, form, namespace) => {
 };
 
 export default objectToFormData;
-
