@@ -22,7 +22,6 @@ const checkForErrors = (result) => {
 };
 
 const reportErrorsFor = (title) => (err) => {
-  // TODO Replace with our own helpers/log that is guaranteed to be blocking?
   xmark(() => console.error(chalk.red(` ERROR generating '${title}': `), prettyStringify(err)));
   process.exit(1);
 };

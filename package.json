@@ -1,16 +1,16 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-boilerplate-fork",
   "version": "3.5.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices forked from git://github.com/react-boilerplate/react-boilerplate.git",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/saileshkasaju/react-boilerplate.git"
   },
   "engines": {
     "npm": ">=3",
     "node": ">=5"
   },
-  "author": "Max Stoiber",
+  "author": "Sailesh Kasaju",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
